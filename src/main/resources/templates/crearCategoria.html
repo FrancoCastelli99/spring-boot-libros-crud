@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+<title>Crear Categoria</title>
+</head>
+<body>
+
+	<form th:action="@{/formCategoria}"  th:object="${categoria}" method="post">
+		
+		<div>
+			<label for="id">Identificador</label>
+		</div>
+		<div>
+			<input name="id" id="id" type="text" th:field="*{id}">
+		</div> 
+		<div   th:if="${#fields.hasErrors('id')}" th:errors=*{id}  ></div>
+		
+		
+		
+		<div>
+			<label for="descripcion">Descripción</label>
+		</div>
+		<div>
+			<input name="descripcion" id="descripcion" type="text" th:field="*{descripcion}">
+		</div> 
+		<div   th:if="${#fields.hasErrors('descripcion')}" th:errors=*{descripcion}  ></div>
+			
+		<br>
+		<div>
+			<input type="submit" value="Enviar" > 
+		</div>
+	
+	
+	</form>
+
+</body>
+</html>

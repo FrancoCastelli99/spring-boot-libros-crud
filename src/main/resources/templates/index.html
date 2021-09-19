@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<title>Libreria</title>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/}">***Libreria***</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" th:href="@{/}">Libros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " th:href="@{/autor}">Autores</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/categoria}">Categorias</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+</head>
+<body style="background-color: #f2f2f2;">
+	
+	<center>
+		<h1>Libros</h1>
+	</center>
+	
+	<table class="table table-border table-striped" style="margin-top: 105px;">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Título</th>
+				<th>Autor</th>
+				<th>Año</th>
+				<th>ISBN</th>
+				<th>Paginas</th>
+				<th>Categoria</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="libroLista != null" th:each="libro: ${listaLibro}">
+				<td th:text="${libro.id}"></td>
+				<td th:text="${libro.titulo}"></td>
+				<td th:text="${libro.autor.nombre} +' '+ ${libro.autor.apellido}"></td>
+				<td th:text="${libro.anno}"></td>
+				<td th:text="${libro.isbn}"></td>
+				<td th:text="${libro.cantidad_paginas}"></td>
+				<td th:text="${libro.categoria.descripcion}"></td>
+				<td>
+					<a th:href="@{/eliminar/} + ${libro.id}" class="btn btn-danger">Eliminar</a>
+					<a th:href="@{/editar/} + ${libro.id}" class="btn btn-warning">Editar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div>
+		<a th:href="@{/crearLibro}" class="btn btn-success" style="margin-left: 20px;">Crear Libro</a>
+	</div>
+
+</body>
+</html>

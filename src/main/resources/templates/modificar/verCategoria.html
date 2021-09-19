@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Editar Categoria</title>
+</head>
+<body>
+	<h1 th:text="${resultado}"></h1>
+	<h1>Editar Categoria</h1>
+	
+	<h1 th:text="${categoria.descripcion}"></h1>
+	<form th:action="@{/editCategoria}" th:object="${categoria}" method="post">
+		
+		<div>
+			<label for="id">Identificador</label>
+		</div>
+		<div>
+			<input name="id" id="id" type="text" th:value="${categoria.id}"  readonly="readonly">
+		</div> 
+		<div>
+			<label for="descripcion">Descripción</label>
+		</div>
+		<div>
+			<input name="descripcion" id="descripcion" type="text" th:value="${categoria.descripcion}">
+		</div> 
+	
+		
+		
+		<br>
+		<div>
+			<input type="submit" value="Enviar" > 
+		</div>
+	</form> 
+</body>
+</html>
