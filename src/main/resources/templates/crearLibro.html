@@ -66,6 +66,7 @@
 					<option  th:each="categoria: ${listaCategoria}" th:text="${categoria.descripcion}" th:value="${categoria.id}"></option>
 				</select>
 			</div> 
+			<div th:if="${#fields.hasErrors('categoria')}" th:errors=*{categoria} class="alert alert-danger" role="alert" style="width: 40%"></div>
 			
 			
 			<div class="mb-3" style="width: 40%">

@@ -24,6 +24,7 @@ public class Autor {
 	@Size( min = 4)
 	private String apellido;
 	
+	@NotBlank
 	private String nacionalidad;
 	
 	@Pattern(regexp = "[a-zA-Z]+")
